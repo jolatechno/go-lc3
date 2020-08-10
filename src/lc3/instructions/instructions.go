@@ -1,7 +1,7 @@
 package instructions
 
 import (
-
+  "errors"
 )
 
 /* defining the name of all lc3 opcode */
@@ -26,13 +26,16 @@ const (
 )
 
 /* defining a basic interface for lc3 instructions */
-type lc3instruction struct {
+type Lc3Instruction struct {
   OP uint8 /* instruction opcode, uint4 would have been more appropriate but isn't present in standard go */
-  Exec func( /* function serving intstruction's execution */
-    Memory interface{},
-    Registers interface{},
-  )
+  Exec func(memory interface{}, registers interface{}, params []interface{}) (err error) /* function serving intstruction's execution */
 }
 
 /* and an array to store them */
-var lc3instructions [OP_COUNT]*lc3instruction; // later defined in other files (one per instruction)
+var Lc3instructions [OP_COUNT]*Lc3Instruction; // later defined in other files (one per instruction)
+
+/* defining the interface */
+func (instru *Lc3Instruction)Run(memory interface{}, registers interface{}, params []interface{}) (err error) {
+  /* TODO */
+  return errors.New("Not implemented")
+}

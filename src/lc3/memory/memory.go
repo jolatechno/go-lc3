@@ -2,6 +2,7 @@ package memory
 
 import (
   "math"
+  "errors"
 )
 
 const (
@@ -9,7 +10,28 @@ const (
 )
 
 /* defining the type of lc3 memory */
-type lc3type uint16
+type Lc3Mem [UINT16_MAX]uint16
 
 /* and creating an array representing this memory */
-var lc3mem [UINT16_MAX]lc3type
+var Lc3mem Lc3Mem
+
+/* defining the interface */
+func (mem *Lc3Mem)Write(address interface{}, value interface{}) (err error) {
+  /* TODO */
+  return errors.New("Not implemented")
+}
+
+func (mem *Lc3Mem)Writea(address interface{}, values []interface{}) (n int, err error) {
+  /* TODO */
+  return 0, errors.New("Not implemented")
+}
+
+func (mem *Lc3Mem)Read(address interface{}) (value interface{}, err error) {
+  /* TODO */
+  return nil, errors.New("Not implemented")
+}
+
+func (mem *Lc3Mem)Reada(address interface{}, values []interface{}) (n int, err error) {
+  /* TODO */
+  return 0, errors.New("Not implemented")
+}

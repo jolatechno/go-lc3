@@ -1,7 +1,7 @@
 package registers
 
 import (
-
+  "errors"
 )
 
 /* defining the name of all lc3 registers */
@@ -27,7 +27,18 @@ const (
 )
 
 /* defining the type of those register */
-type lc3register uint16
+type Lc3Registers [R_COUNT]uint16
 
 /* and an array to store them, which will be populated later */
-var lc3registers [R_COUNT]*lc3register;
+var Lc3registers Lc3Registers;
+
+/* defining the interface */
+func (regs *Lc3Registers)Write(reg interface{}, value interface{}) (err error) {
+  /* TODO */
+  return errors.New("Not implemented")
+}
+
+func (regs *Lc3Registers)Read(reg interface{}) (value interface{}, err error) {
+  /* TODO */
+  return nil, errors.New("Not implemented")
+}
