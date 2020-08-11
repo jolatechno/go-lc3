@@ -3,3 +3,5 @@ github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811080702-672fcc95b73f h
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811080702-672fcc95b73f/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811102957-bbe7ed809550 h1:WfdDiQnORMeN3YrEAu2uiRjY9KwTpomw8AG9ukw1r08=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811102957-bbe7ed809550/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811104713-67998025f49e h1:3mZNN4Tzyk6CYpm4O5IbLiy6jzCoWrlXeKQKR8B7pvI=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811104713-67998025f49e/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=

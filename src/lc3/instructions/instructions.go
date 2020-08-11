@@ -33,7 +33,8 @@ type Lc3Instruction struct {
 }
 
 /* defining the interface */
-func (instru *Lc3Instruction)Run(memory interfaces.Memory, registers interfaces.Registers, params []interface{}) (next bool, err error) {
+func (instru *Lc3Instruction)Run(memory interfaces.Memory, registers interfaces.Registers, op interfaces.Op) (next bool, err error) {
+  params := op.Params() /* redaing parameters */
   intParam, ok := params[0].(uint16) /* convert param to int */
   if !ok { /* return an error if not possible */
     return false, errors.New("register not understood")
