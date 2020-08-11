@@ -6,13 +6,16 @@ import (
 
 /* interface to define an instruction */
 type Instruction interface {
-  Run(memory Memory, registers Registers, params []interface{}) (next bool, err error) /* execute an instruction given specific state and parameters */
+  Run(memory Memory, registers Registers, op Op) (next bool, err error) /* execute an instruction given specific state and parameters */
 }
 
-/* interface to define an instruction */
+/* interface to define an instruction set */
+type InstructionSet interface {
+  Get(op Op) (inst Instruction, err error)
+}
+
+/* interface to define an opcode */
 type Op interface {
   Params() (params []interface{}) /* get params */
   Instruction() (op interface{}) /* get instruction */
-  ToMemory() (value interface{}) /* convert opcode to memory alocateable value */
-  FromMemory(value interface{}) (err error) /* convert memory value to opcode */
 }
