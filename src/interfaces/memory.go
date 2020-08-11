@@ -1,7 +1,6 @@
 package interfaces
 
 import (
-
 )
 
 type Memory interface {
