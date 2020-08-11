@@ -34,11 +34,34 @@ var Lc3registers Lc3Registers;
 
 /* defining the interface */
 func (regs *Lc3Registers)Write(reg interface{}, value interface{}) (err error) {
-  /* TODO */
-  return errors.New("Not implemented")
+  intReg, ok := reg.(uint16) /* convert reg to int */
+  if !ok { /* return an error if not possible */
+    return errors.New("register not understood")
+  }
+
+  intValue, ok := value.(uint16) /* convert value to int */
+  if !ok { /* return an error if not possible */
+    return errors.New("value not understood")
+  }
+
+  if intReg < 0 || intReg >= R_COUNT { /* check if reg is not out of range */
+    return errors.New("register is out of range")
+  }
+
+  Lc3registers[intReg] = intValue /* write value into the register array */
+  return nil
 }
 
 func (regs *Lc3Registers)Read(reg interface{}) (value interface{}, err error) {
-  /* TODO */
-  return nil, errors.New("Not implemented")
+  intReg, ok := reg.(uint16) /* convert reg to int */
+  if !ok { /* return an error if not possible */
+    return 0, errors.New("register not understood")
+  }
+
+  if intReg < 0 || intReg >= R_COUNT { /* check if reg is not out of range */
+    return 0, errors.New("register is out of range")
+  }
+
+  value = Lc3registers[intReg] /* read value from memory */
+  return value, nil
 }
