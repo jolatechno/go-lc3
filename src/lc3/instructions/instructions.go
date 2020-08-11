@@ -29,14 +29,15 @@ const (
 /* defining a basic interface for lc3 instructions */
 type Lc3Instruction struct {
   OP uint8 /* instruction opcode, uint4 would have been more appropriate but isn't present in standard go */
-  Exec func(memory interfaces.Memory, interfaces interfaces.Registers, params []interface{}) (err error) /* function serving intstruction's execution */
+  Exec func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (err error) /* function serving intstruction's execution */
 }
 
-/* and an array to store them */
-var Lc3instructions [OP_COUNT]*Lc3Instruction; // later defined in other files (one per instruction)
-
 /* defining the interface */
-func (instru *Lc3Instruction)Run(memory interface{}, registers interface{}, params []interface{}) (err error) {
-  /* TODO */
-  return errors.New("Not implemented")
+func (instru *Lc3Instruction)Run(memory interfaces.Memory, registers interfaces.Registers, params []interface{}) (err error) {
+  intParam, ok := params[0].(uint16) /* convert param to int */
+  if !ok { /* return an error if not possible */
+    return errors.New("register not understood")
+  }
+
+  return instru.Exec(memory, registers, intParam) /* execute the instruction */
 }

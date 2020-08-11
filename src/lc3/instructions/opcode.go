@@ -6,27 +6,28 @@ import (
 
 /* defining the type of lc3 opcode */
 type Lc3OP struct {
-  Op int8 /* instruction opcode, uint4 would have been more appropriate but isn't present in standard go */
-  Parms []int16 /* list of additional parameters */
+  Value uint16 /* memory type */
 }
 
 /* defining the interface */
 func (opcode *Lc3OP)Params() (params []interface{}) {
-  /* TODO */
-  return nil
+  return []interface{}{ opcode.Value } /* return parameters */
 }
 
 func (opcode *Lc3OP)Instruction() (op interface{}) {
-  /* TODO */
-  return nil
+  return opcode.Value >> 12 /* return the opcode */
 }
 
 func (opcode *Lc3OP)ToMemory() (value interface{}) {
-  /* TODO */
-  return nil
+  return opcode.Value /* return memory value */
 }
 
 func (opcode *Lc3OP)FromMemory(value interface{}) (err error) {
-  /* TODO */
-  return errors.New("Not implemented")
+  intValue, ok := value.(uint16) /* convert value to int */
+  if !ok { /* return an error if not possible */
+    return errors.New("register not understood")
+  }
+
+  opcode.Value = intValue /* assign value */
+  return nil
 }
