@@ -65,3 +65,12 @@ func (regs *Lc3Registers)Read(reg interface{}) (value interface{}, err error) {
   value = Lc3registers[intReg] /* read value from memory */
   return value, nil
 }
+
+func (regs *Lc3Registers)Fetch(memory Memory) (instruction interface{}, err error) {
+  pc, err := regs.Read(R_PC) /* get pc value */
+  if err != nil { /* throw error */
+    return nil, err
+  }
+
+  return memory.Read(pc) /* return the value in memory corresponding to pc */
+}
