@@ -1,0 +1,3 @@
+github.com/jolatechno/go-lc3 v0.0.0-20200810154335-c0a842908290 h1:j2l45/3nheW5J3EpzzSKqg55I0/v5CvakgwH7uWg1GY=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811080702-672fcc95b73f h1:4WS8Z4oYc13qhsssCbiMxLB3FF1+Y3HGC/ZeIKvX2e8=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811080702-672fcc95b73f/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=

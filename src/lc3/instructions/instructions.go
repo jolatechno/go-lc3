@@ -2,6 +2,7 @@ package instructions
 
 import (
   "errors"
+  "github.com/jolatechno/go-lc3/src/interfaces"
 )
 
 /* defining the name of all lc3 opcode */
@@ -28,7 +29,7 @@ const (
 /* defining a basic interface for lc3 instructions */
 type Lc3Instruction struct {
   OP uint8 /* instruction opcode, uint4 would have been more appropriate but isn't present in standard go */
-  Exec func(memory interface{}, registers interface{}, params []interface{}) (err error) /* function serving intstruction's execution */
+  Exec func(memory interfaces.Memory, interfaces interfaces.Registers, params []interface{}) (err error) /* function serving intstruction's execution */
 }
 
 /* and an array to store them */
