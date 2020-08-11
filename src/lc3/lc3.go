@@ -7,10 +7,6 @@ import (
   "github.com/jolatechno/go-lc3/src/lc3/instructions"
 )
 
-var (
-  InstructionSet = (instructions.Lc3instructions).(instructions.Lc3InstructionSet)
-)
-
 func Exec(prgm []uint16) (err error){
   pc_start := 0x3000 /* init the pc to a certain value */
 
@@ -20,5 +16,5 @@ func Exec(prgm []uint16) (err error){
   }
 
   memory.Lc3mem.Writea(pc_start, interfacePrgm) /* write the program to memory, starting at the pc */
-  return cpu.Run(&memory.Lc3mem, &registers.Lc3registers, InstructionSet) /* run the vm */
+  return cpu.Run(&memory.Lc3mem, &registers.Lc3registers, &instructions.Lc3instructionSet) /* run the vm */
 }
