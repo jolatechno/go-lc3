@@ -13,7 +13,7 @@ const (
 type Lc3Mem [UINT16_MAX]uint16
 
 /* and creating an array representing this memory */
-var Lc3mem Lc3Mem
+var Lc3mem = make([]uint16, UINT16_MAX)
 
 /* defining the interface */
 func (mem *Lc3Mem)Write(address interface{}, value interface{}) (err error) {
