@@ -21,13 +21,6 @@ const (
     PC_START = 0x3000 /* init the pc to a certain value */
 )
 
-/* defining condition flags */
-const (
-    FL_POS = 1 << iota /* Positive */
-    FL_ZRO = 1 << iota /* Zero */
-    FL_NEG = 1 << iota /* Negative */
-)
-
 /* defining the type of those register */
 type Lc3Registers struct {
   Registers [R_COUNT]uint16
