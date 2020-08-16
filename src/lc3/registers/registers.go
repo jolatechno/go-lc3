@@ -8,17 +8,17 @@ import (
 
 /* defining the name of all lc3 registers */
 const (
-    R_R0 = iota
-    R_R1 = iota
-    R_R2 = iota
-    R_R3 = iota
-    R_R4 = iota
-    R_R5 = iota
-    R_R6 = iota
-    R_R7 = iota
-    R_PC = iota  /* program counter */
-    R_COND = iota
-    R_COUNT = iota
+    R_R0 uint16 = iota
+    R_R1 uint16 = iota
+    R_R2 uint16 = iota
+    R_R3 uint16 = iota
+    R_R4 uint16 = iota
+    R_R5 uint16 = iota
+    R_R6 uint16 = iota
+    R_R7 uint16 = iota
+    R_PC uint16 = iota  /* program counter */
+    R_COND uint16 = iota
+    R_COUNT uint16 = iota
 )
 
 /* defining condition flags */
@@ -29,10 +29,15 @@ const (
 )
 
 /* defining the type of those register */
-type Lc3Registers [R_COUNT]uint16
+type Lc3Registers struct {
+  Registers [R_COUNT]uint16
+}
 
 /* and an array to store them, which will be populated later */
-var Lc3registers Lc3Registers;
+var (
+  lc3registers [R_COUNT]uint16
+  Lc3registers = Lc3Registers{ lc3registers }
+)
 
 /* defining the interface */
 func (regs *Lc3Registers)Write(reg interface{}, value interface{}) (err error) {
@@ -50,7 +55,7 @@ func (regs *Lc3Registers)Write(reg interface{}, value interface{}) (err error) {
     return errors.New("register is out of range")
   }
 
-  Lc3registers[intReg] = intValue /* write value into the register array */
+  regs.Registers[intReg] = intValue /* write value into the register array */
   return nil
 }
 
@@ -64,7 +69,7 @@ func (regs *Lc3Registers)Read(reg interface{}) (value interface{}, err error) {
     return 0, errors.New("register is out of range")
   }
 
-  value = Lc3registers[intReg] /* read value from memory */
+  value = regs.Registers[intReg] /* read value from memory */
   return value, nil
 }
 
