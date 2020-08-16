@@ -12,7 +12,7 @@ var (
 )
 
 func TestLc3Op(t *testing.T) {
-  _, ok := interface{}(&test_opcode).(interfaces.Op) /* testing if Lc3Op implements the write interface */
+  _, ok := interface{}(&test_opcode).(interfaces.Op) /* testing if Lc3Op implements the right interface */
   if !ok { /* throwing an error */
     t.Error("couldn't convert lc3 opcode to interface")
   }

@@ -13,7 +13,7 @@ var (
 )
 
 func TestLc3Memory(t *testing.T) {
-  _, ok := interface{}(&Lc3mem).(interfaces.Memory) /* testing if Lc3mem implements the write interface */
+  _, ok := interface{}(&Lc3mem).(interfaces.Memory) /* testing if Lc3mem implements the right interface */
   if !ok { /* throwing an error */
     t.Error("couldn't convert lc3 memory to interface")
   }

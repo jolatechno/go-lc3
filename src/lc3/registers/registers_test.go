@@ -15,7 +15,7 @@ var (
 )
 
 func TestLc3Registers(t *testing.T) {
-  _, ok := interface{}(&Lc3registers).(interfaces.Registers) /* testing if Lc3registers implements the write interface */
+  _, ok := interface{}(&Lc3registers).(interfaces.Registers) /* testing if Lc3registers implements the right interface */
   if !ok { /* throwing an error */
     t.Error("couldn't convert lc3 registers to interface")
   }

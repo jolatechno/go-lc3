@@ -19,6 +19,8 @@ const (
     R_PC uint16 = iota  /* program counter */
     R_COND uint16 = iota
     R_COUNT uint16 = iota
+
+    PC_START = 0x3000 /* init the pc to a certain value */
 )
 
 /* defining condition flags */
@@ -35,7 +37,7 @@ type Lc3Registers struct {
 
 /* and an array to store them, which will be populated later */
 var (
-  lc3registers [R_COUNT]uint16
+  lc3registers = [R_COUNT]uint16{ 0, 0, 0, 0, 0, 0, 0, 0, PC_START, 0 }
   Lc3registers = Lc3Registers{ lc3registers }
 )
 
