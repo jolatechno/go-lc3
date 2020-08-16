@@ -9,20 +9,20 @@ import (
 const (
     OP_BR = iota     /* branch */
     OP_ADD = iota    /* add  */
-    OP_LD = iota     /* load */
-    OP_ST = iota     /* store */
-    OP_JSR = iota    /* jump register */
-    OP_AND = iota    /* bitwise and */
-    OP_LDR = iota    /* load register */
-    OP_STR = iota    /* store register */
-    OP_RTI = iota    /* unused */
-    OP_NOT = iota    /* bitwise not */
-    OP_LDI = iota    /* load indirect */
-    OP_STI = iota    /* store indirect */
-    OP_JMP = iota    /* jump */
-    OP_RES = iota    /* reserved (unused) */
-    OP_LEA = iota    /* load effective address */
-    OP_TRAP = iota   /* execute trap */
+    OP_LD = iota     /* load */ /* TODO */
+    OP_ST = iota     /* store */ /* TODO */
+    OP_JSR = iota    /* jump register */ /* TODO */
+    OP_AND = iota    /* bitwise and */ /* TODO */
+    OP_LDR = iota    /* load register */ /* TODO */
+    OP_STR = iota    /* store register */ /* TODO */
+    OP_RTI = iota    /* unused */ /* TODO */
+    OP_NOT = iota    /* bitwise not */ /* TODO */
+    OP_LDI = iota    /* load indirect */ /* TODO */
+    OP_STI = iota    /* store indirect */ /* TODO */
+    OP_JMP = iota    /* jump */ /* TODO */
+    OP_RES = iota    /* reserved (unused) */ /* TODO */
+    OP_LEA = iota    /* load effective address */ /* TODO */
+    OP_TRAP = iota   /* execute trap */ /* TODO */
     OP_COUNT = iota
 )
 
