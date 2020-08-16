@@ -7,10 +7,6 @@ import (
   "github.com/jolatechno/go-lc3/src/lc3/instructions"
 )
 
-var (
-  Offset uint16 = 0x0000
-)
-
 /* defining the lc3 cpu interface */
 type Lc3Cpu struct {
   Mem memory.Lc3Mem
