@@ -37,7 +37,7 @@ func update_flags(res uint16, regs interfaces.Registers) (err error) {
 }
 
 /* sign_extend */
-func sign_extend(x uint16, bit_count int) uint16 {
+func sign_extend(x uint16, bit_count uint16) uint16 {
     if (x >> (bit_count - 1)) & 1 == 1 {
         x |= (0xFFFF << bit_count);
     }
