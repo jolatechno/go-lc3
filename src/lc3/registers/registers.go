@@ -2,8 +2,6 @@ package registers
 
 import (
   "errors"
-  "github.com/jolatechno/go-lc3/src/interfaces"
-  "github.com/jolatechno/go-lc3/src/lc3/opcode"
 )
 
 /* defining the name of all lc3 registers */
@@ -75,21 +73,8 @@ func (regs *Lc3Registers)Read(reg interface{}) (value interface{}, err error) {
   return value, nil
 }
 
-func (regs *Lc3Registers)Fetch(memory interfaces.Memory) (op interfaces.Op, err error) {
-  pc, err := regs.Read(R_PC) /* get pc value */
-  if err != nil { /* throw error */
-    return nil, err
-  }
-
-  inst, err := memory.Read(pc) /* read the value in memory corresponding to pc */
-  if err != nil { /* throw error */
-    return nil, err
-  }
-
-  intInst, ok := inst.(uint16) /* convert reg to int */
-  if !ok { /* return an error if not possible */
-    return nil, errors.New("instruction not understood")
-  }
-
-  return &opcode.Lc3OP{ intInst }, nil /* convert this value to an opcode */
+func (regs *Lc3Registers)Fetch() (value interface{}, err error) {
+  pc := regs.Registers[R_PC] /* read the pc */
+  regs.Registers[R_PC] = pc + 1 /* increment it */
+  return pc, nil /* return it */
 }

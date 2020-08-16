@@ -12,6 +12,7 @@ github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816104459-08d0836f517f/g
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816122940-9f28d9b9ba6c/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816125208-01007f0e266c h1:qKUvfY150G53PPB00YGAw29AdGiKg4b5zBWEsOj2GJ8=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816125208-01007f0e266c/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816194249-cd012723dc4f/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/lc3 v0.0.0-20200815155236-df35b481b6c5 h1:NWypIVk/Q5MhMKkHxjYjCUhHr01BDibKI4SlmicZNfU=
 github.com/jolatechno/go-lc3/src/lc3/memory v0.0.0-20200815155236-df35b481b6c5 h1:/2Ic6UMocPDw9VzsRu5EGfj8NXkLElQbxVNeTQ/KXoo=
 github.com/jolatechno/go-lc3/src/lc3/memory v0.0.0-20200815155236-df35b481b6c5/go.mod h1:hxcaz7iaxRaSdGPRGAinvNF5Zpa/ePHe9YhBGRST400=

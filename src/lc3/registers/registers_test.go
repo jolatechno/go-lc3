@@ -3,13 +3,11 @@ package registers
 import (
   "testing"
   "github.com/jolatechno/go-lc3/src/interfaces"
-  "github.com/jolatechno/go-lc3/src/lc3/memory"
 )
 
 var (
   reg uint16 = 2
   value uint16 = 8
-  test_memory = &memory.Lc3mem
   instruction uint16 = 2
   mem_value uint16 = instruction << 12
 )
@@ -36,22 +34,11 @@ func TestLc3Registers(t *testing.T) {
   if err != nil { /* throwing an error */
     t.Error(err)
   } else {
-    err = test_memory.Write(pc, mem_value) /* writting instruction to memory */
+    pc_fetch, err := (&Lc3registers).Fetch() /* Fetch the pc */
     if err != nil { /* throwing an error */
-      t.Error("couldn't test fetch because of memory write error")
-    } else {
-      op, err := (&Lc3registers).Fetch(test_memory) /* checking the fetch function */
-      if err != nil { /* throwing an error */
-        t.Error(err)
-      } else {
-        if op.Instruction() != instruction { /* check if param and write match */
-          t.Error("lc3 register fetch instruction don't match")
-        }
-
-        if op.Params() != mem_value { /* check if param and write match */
-          t.Error("lc3 register fetch params don't match")
-        }
-      }
+      t.Error(err)
+    } else if pc != pc_fetch { /* check if pc match */
+      t.Error("lc3 pc don't match")
     }
   }
 
