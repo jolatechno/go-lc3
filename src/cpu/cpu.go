@@ -4,20 +4,25 @@ import (
   "github.com/jolatechno/go-lc3/src/interfaces"
 )
 
+/* function to load a program */
+func Load(cpu interfaces.Cpu, offset interface{}, prgm interface{}) (n int, err error) {
+  return cpu.Memory().Writea(offset, prgm) /* write prgm to memory at offset */
+}
+
 /* function to run the vm */
-func Run(memory interfaces.Memory, registers interfaces.Registers, instructions interfaces.InstructionSet) (err error) {
+func Run(cpu interfaces.Cpu) (err error) {
   for { /* main loop */
-    op, err := registers.Fetch(memory) /* fetching the next instruction */
+    op, err := cpu.Registers().Fetch(cpu.Memory()) /* fetching the next instruction */
     if err != nil { /* throw error */
       return err
     }
 
-    inst, err := instructions.Get(op) /* get the instruction opcode */
+    inst, err := cpu.InstructionSet().Get(op) /* get the instruction opcode */
     if err != nil { /* throw error */
       return err
     }
 
-    next, err := inst.Run(memory, registers, op) /* execute the instruction */
+    next, err := inst.Run(cpu.Memory(), cpu.Registers(), op) /* execute the instruction */
     if err != nil {
       return err
     }
