@@ -180,13 +180,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     &Lc3Instruction{
       OP: OP_RTI,
       Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
-        defer func() { /* recover panics */
-          err = recover_all()
-        }()
-
-        /* TODO */
-        panic(errors.New("Not yet implemented"))
-        return true, err
+        return false, errors.New("Unknown opcode") /* return an error */
       },
     },
 
@@ -197,8 +191,14 @@ var Lc3instructionSet = Lc3InstructionSet {
           err = recover_all()
         }()
 
-        /* TODO */
-        panic(errors.New("Not yet implemented"))
+        dr := (param >> 9) & 0x7
+  			sr1 := (param >> 6) & 0x7
+
+  			res := ^readReg(regs, sr1) /* read bitwise not of sr1 register */
+
+        handle(regs.Write(dr, res)) /* write res to register */
+        handle(update_flags(res, regs)) /* update flags */
+
         return true, err
       },
     },
@@ -247,13 +247,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     &Lc3Instruction{
       OP: OP_RES,
       Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
-        defer func() { /* recover panics */
-          err = recover_all()
-        }()
-
-        /* TODO */
-        panic(errors.New("Not yet implemented"))
-        return true, err
+        return false, errors.New("Unknown opcode") /* return an error */
       },
     },
 
@@ -264,8 +258,15 @@ var Lc3instructionSet = Lc3InstructionSet {
           err = recover_all()
         }()
 
-        /* TODO */
-        panic(errors.New("Not yet implemented"))
+        dr := (param >> 9) & 0x7
+  			pc_offset := sign_extend(param & 0x1ff, 9)
+
+  			pc := readReg(regs, registers.R_PC) /* read pc register */
+        res := pc + pc_offset
+
+        handle(regs.Write(dr, res)) /* write res to register */
+        handle(update_flags(res, regs)) /* update flags */
+
         return true, err
       },
     },
