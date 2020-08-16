@@ -35,14 +35,20 @@ func (mem *Lc3Mem)Write(address interface{}, value interface{}) (err error) {
   return nil
 }
 
-func (mem *Lc3Mem)Writea(address interface{}, values []interface{}) (n int, err error) {
-  n = len(values) /* maximum size written */
+func (mem *Lc3Mem)Writea(address interface{}, values interface{}) (n int, err error) {
   err = nil
 
   intAddr, ok := address.(uint16) /* convert adress to int */
   if !ok { /* return an error if not possible */
     return 0, errors.New("adress not understood")
   }
+
+  intValues, ok := values.([]uint16) /* convert values to int */
+  if !ok { /* return an error if not possible */
+    return 0, errors.New("values not understood")
+  }
+
+  n = len(intValues) /* maximum size written */
 
   if intAddr < 0 || intAddr >= UINT16_MAX { /* check if adress is not out of range */
     return 0, errors.New("adress is out of range")
@@ -53,12 +59,8 @@ func (mem *Lc3Mem)Writea(address interface{}, values []interface{}) (n int, err 
     err = errors.New("Write out of range")
   }
 
-  for i, value := range values[0: n] { /* write values to memory */
-    intValue, ok := value.(uint16) /* convert value to int */
-    if !ok {  /* return an error if not possible */
-      return i, errors.New("value not understood")
-    }
-    Lc3mem[intAddr + uint16(i)] = intValue
+  for i, value := range intValues[0: n] { /* write values to memory */
+    Lc3mem[intAddr + uint16(i)] = value
   }
 
   return n, err

@@ -9,8 +9,8 @@ type Lc3OP struct {
 }
 
 /* defining the interface */
-func (opcode *Lc3OP)Params() (params []interface{}) {
-  return []interface{}{ opcode.Value } /* return parameters */
+func (opcode *Lc3OP)Params() (params interface{}) {
+  return opcode.Value /* return parameters */
 }
 
 func (opcode *Lc3OP)Instruction() (op interface{}) {
