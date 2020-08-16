@@ -3,6 +3,7 @@ package instructions
 import (
   "errors"
   "github.com/jolatechno/go-lc3/src/interfaces"
+  "github.com/jolatechno/go-lc3/src/lc3/registers"
 )
 
 /* defining the instruction set */
@@ -25,135 +26,20 @@ func (set *Lc3InstructionSet)Get(op interfaces.Op) (instr interfaces.Instruction
   return instr, nil
 }
 
-/* instructionset definition */
-var Lc3instructionSet = Lc3InstructionSet {
-  [OP_COUNT]*Lc3Instruction{
-    &Lc3Instruction{
-      OP: OP_BR,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
+/* update flag */
+func update_flags(res uint16, regs interfaces.Registers) (err error) {
+    if (res == 0) {
+        return regs.Write(registers.R_COND, registers.FL_ZRO)
+    } else if res >> 15 == 1 { /* a 1 in the left-most bit indicates negative */
+        return regs.Write(registers.R_COND, registers.FL_NEG)
+    }
+    return regs.Write(registers.R_COND, registers.FL_POS)
+}
 
-    &Lc3Instruction{
-      OP: OP_ADD,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_LD,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_ST,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_JSR,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_AND,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_LDR,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_STR,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_RTI,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_NOT,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_LDI,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_STI,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_JMP,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_RES,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_LEA,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-
-    &Lc3Instruction{
-      OP: OP_TRAP,
-      Exec: func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) {
-        /* TODO */
-        return false, errors.New("Not yet implemented")
-      },
-    },
-  },
+/* sign_extend */
+func sign_extend(x uint16, bit_count int) uint16 {
+    if (x >> (bit_count - 1)) & 1 == 1 {
+        x |= (0xFFFF << bit_count);
+    }
+    return x;
 }
