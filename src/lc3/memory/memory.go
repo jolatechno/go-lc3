@@ -3,6 +3,8 @@ package memory
 import (
   "math"
   "errors"
+  "github.com/jolatechno/go-lc3/src/interfaces"
+  "github.com/jolatechno/go-lc3/src/lc3/opcode"
 )
 
 const (
@@ -114,4 +116,18 @@ func (mem *Lc3Mem)Reada(address interface{}, values interface{}) (n int, err err
   }
 
   return n, err
+}
+
+func (mem *Lc3Mem)Fetch(pc interface{}) (op interfaces.Op, err error) {
+  v, err := mem.Read(pc) /* read value of memory */
+  if err != nil { /* throw an error */
+    return nil, err
+  }
+
+  v_int, ok := v.(uint16) /* convert value to int */
+  if !ok { /* return an error if not possible */
+    return nil, errors.New("values not understood")
+  }
+
+  return &opcode.Lc3OP{ v_int }, nil /* return opcode */
 }

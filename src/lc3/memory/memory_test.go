@@ -8,6 +8,7 @@ import (
 var (
   address uint16 = 0
   value uint16 = 12
+  instruction uint16 = value >> 12
   addresses uint16 = 0
   values = []uint16{13, 14}
 )
@@ -29,6 +30,15 @@ func TestLc3Memory(t *testing.T) {
     t.Error(err)
   } else if read_value != value { /* checking if read and write value match */
     t.Error("lc3 memory read and write values don't match")
+  }
+
+  read_op, err := (&Lc3mem).Fetch(address) /* checking the Read function */
+  if err != nil { /* throwing an error */
+    t.Error(err)
+  } else if read_op.Instruction() != instruction { /* checking if read and write instruction match */
+    t.Error("lc3 memory fetch and write instruction don't match")
+  } else if read_op.Params() != value { /* checking if read and write instruction match */
+    t.Error("lc3 memory fetch and write params don't match")
   }
 
   n, err := (&Lc3mem).Writea(addresses, values) /* checking the Write function */
