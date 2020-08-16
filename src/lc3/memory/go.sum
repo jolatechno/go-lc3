@@ -12,6 +12,8 @@ github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816104303-3fb61f5875c3 h
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816104303-3fb61f5875c3/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816104459-08d0836f517f h1:aIOBd5amLejTgMu9JAQ7ksE6vjQKRCh7WWylJn6v1RE=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816104459-08d0836f517f/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816122940-9f28d9b9ba6c h1:Ph7RSesUEHCeU2v5SDbPwYoLP/6PX4aQWk9O6viaSik=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816122940-9f28d9b9ba6c/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200811114311-f2e614966d34 h1:SBOeHvxLBw8AsbwYDoV/6i2tvy+LZB+E8llE6RzNbGs=
 github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200811114311-f2e614966d34/go.mod h1:3v4aoWe4YhDexhZrTFSHUEFq/FKuYT/Pt4F3X35gnYg=
 github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200816103356-3a6096a41eee h1:DwAu2/Unk2oUn912aFNEB9Qnx4r2EW+MJNTNfYtY4fM=

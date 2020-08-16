@@ -10,10 +10,15 @@ const (
 )
 
 /* defining the type of lc3 memory */
-type Lc3Mem [UINT16_MAX]uint16
+type Lc3Mem struct{
+  Buff [UINT16_MAX]uint16
+}
 
 /* and creating an array representing this memory */
-var Lc3mem = make([]uint16, UINT16_MAX)
+var (
+  lc3mem [UINT16_MAX]uint16
+  Lc3mem = Lc3Mem{ lc3mem }
+)
 
 /* defining the interface */
 func (mem *Lc3Mem)Write(address interface{}, value interface{}) (err error) {
@@ -31,7 +36,7 @@ func (mem *Lc3Mem)Write(address interface{}, value interface{}) (err error) {
     return errors.New("value not understood")
   }
 
-  Lc3mem[intAddr] = intValue
+  mem.Buff[intAddr] = intValue
   return nil
 }
 
@@ -60,7 +65,7 @@ func (mem *Lc3Mem)Writea(address interface{}, values interface{}) (n int, err er
   }
 
   for i, value := range intValues[0: n] { /* write values to memory */
-    Lc3mem[intAddr + uint16(i)] = value
+    mem.Buff[intAddr + uint16(i)] = value
   }
 
   return n, err
@@ -76,12 +81,11 @@ func (mem *Lc3Mem)Read(address interface{}) (value interface{}, err error) {
     return 0, errors.New("adress is out of range")
   }
 
-  value = Lc3mem[intAddr] /* read value off of memory */
+  value = mem.Buff[intAddr] /* read value off of memory */
   return value, nil
 }
 
-func (mem *Lc3Mem)Reada(address interface{}, values []interface{}) (n int, err error) {
-  n = len(values) /* maximum size written */
+func (mem *Lc3Mem)Reada(address interface{}, values interface{}) (n int, err error) {
   err = nil
 
   intAddr, ok := address.(uint16) /* convert adress to int */
@@ -98,8 +102,15 @@ func (mem *Lc3Mem)Reada(address interface{}, values []interface{}) (n int, err e
     err = errors.New("Write out of range")
   }
 
-  for i, value := range (*mem)[intAddr: intAddr + uint16(n)] { /* read values off of memory */
-    values[i] = value
+  intValues, ok := values.([]uint16) /* convert values to int */
+  if !ok { /* return an error if not possible */
+    return 0, errors.New("values not understood")
+  }
+
+  n = len(intValues) /* maximum size written */
+
+  for i, value := range mem.Buff[intAddr: intAddr + uint16(n)] { /* read values off of memory */
+    intValues[i] = value
   }
 
   return n, err
