@@ -3,5 +3,13 @@ github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811081825-83c7c0da829f h
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811081825-83c7c0da829f/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811114311-f2e614966d34 h1:iNJcJ0IV/tm6Nm3u76gQXptfKcOcLM6V2yQAZc4tfVM=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200811114311-f2e614966d34/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816103356-3a6096a41eee h1:Ns5HT3gxMO4VUPQccKQC90kWSTkR8VecOWGMiYveKvQ=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816103356-3a6096a41eee/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816104303-3fb61f5875c3 h1:CSMppsRC7kvYub5w6p8+g99mh7GmckJSDWcInsknG9E=
+github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816104303-3fb61f5875c3/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200811114311-f2e614966d34 h1:SBOeHvxLBw8AsbwYDoV/6i2tvy+LZB+E8llE6RzNbGs=
 github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200811114311-f2e614966d34/go.mod h1:3v4aoWe4YhDexhZrTFSHUEFq/FKuYT/Pt4F3X35gnYg=
+github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200816103356-3a6096a41eee h1:DwAu2/Unk2oUn912aFNEB9Qnx4r2EW+MJNTNfYtY4fM=
+github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200816103356-3a6096a41eee/go.mod h1:3v4aoWe4YhDexhZrTFSHUEFq/FKuYT/Pt4F3X35gnYg=
+github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200816104303-3fb61f5875c3 h1:dqNRBHatQYRlusOlg+C81kXtupmnmPNyz7BVzxWVlGk=
+github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200816104303-3fb61f5875c3/go.mod h1:3v4aoWe4YhDexhZrTFSHUEFq/FKuYT/Pt4F3X35gnYg=
