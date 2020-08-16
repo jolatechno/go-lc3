@@ -12,7 +12,12 @@ func Load(cpu interfaces.Cpu, offset interface{}, prgm interface{}) (n int, err 
 /* function to run the vm */
 func Run(cpu interfaces.Cpu) (err error) {
   for { /* main loop */
-    op, err := cpu.Registers().Fetch(cpu.Memory()) /* fetching the next instruction */
+    pc, err := cpu.Registers().Fetch() /* fetching the next instruction */
+    if err != nil { /* throw error */
+      return err
+    }
+
+    op, err := cpu.Memory().Fetch(pc) /* fetching the next instruction */
     if err != nil { /* throw error */
       return err
     }
