@@ -10,6 +10,6 @@ type Instruction interface {
 
 /* interface to define an opcode */
 type Op interface {
-  Params() (params []interface{}) /* get params */
+  Params() (params interface{}) /* get params */
   Instruction() (op interface{}) /* get instruction */
 }
