@@ -7,7 +7,7 @@ import (
 )
 
 var (
-  test_opcode = &opcode.Lc3OP{ 0 }
+  test_opcode = &opcode.Lc3OP{ 0 << 12 }
 )
 
 func TestLc3InstructionSet(t *testing.T) {
