@@ -1,5 +1,7 @@
 github.com/jolatechno/go-lc3/src/cpu v0.0.0-20200817112319-cbcc2c0e64fe h1:SEm50rrjLrAxWdsC1+P0oqm5xnmWsjvaEwKtVF5NRvI=
 github.com/jolatechno/go-lc3/src/cpu v0.0.0-20200817112319-cbcc2c0e64fe/go.mod h1:XV28Nx9JsbDTsk64D2munN7PtpoXZyf5fbPJ/XeKk0M=
+github.com/jolatechno/go-lc3/src/cpu v0.0.0-20200817162333-56b10a835d4b h1:QIjBetuAiKhE860EKJWOchQa06Ouk5GgXeS/ldC2k34=
+github.com/jolatechno/go-lc3/src/cpu v0.0.0-20200817162333-56b10a835d4b/go.mod h1:XV28Nx9JsbDTsk64D2munN7PtpoXZyf5fbPJ/XeKk0M=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816104459-08d0836f517f/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816193643-d39cb6de92c8/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
 github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200816194249-cd012723dc4f/go.mod h1:gtbnqZwPCFaDGaNbiy+JtLCvOuhyS7gX3tCFVUNvF6U=
