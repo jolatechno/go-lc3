@@ -9,7 +9,7 @@ import (
 )
 
 /* update flag */
-func update_flags(res uint16, regs interfaces.Registers) (err error) {
+func updateFlags(regs interfaces.Registers, res uint16) (err error) {
     if (res == 0) {
         return regs.Write(registers.R_COND, FL_ZRO)
     } else if res >> 15 == 1 { /* a 1 in the left-most bit indicates negative */
@@ -19,7 +19,7 @@ func update_flags(res uint16, regs interfaces.Registers) (err error) {
 }
 
 /* sign_extend */
-func sign_extend(x uint16, bit_count uint16) uint16 {
+func signExtend(x uint16, bit_count uint16) uint16 {
     if (x >> (bit_count - 1)) & 1 == 1 {
         x |= (0xFFFF << bit_count);
     }
@@ -60,7 +60,7 @@ func readMem(mem interfaces.Memory, address uint16) (value uint16) {
 }
 
 /* convert any recover to error for return */
-func recover_all() (err error) {
+func recoverAll() (err error) {
   r := recover()
   if r != nil {
     switch x := r.(type) {
@@ -79,7 +79,7 @@ func recover_all() (err error) {
 }
 
 // GetChar reads one character from Stdin as an uint16
-func GetChar() uint16 {
+func getChar() uint16 {
 	exec.Command("stty", "-F", "/dev/tty", "cbreak", "min", "1").Run()
 	exec.Command("stty", "-F", "/dev/tty", "-echo").Run()
 
@@ -89,7 +89,7 @@ func GetChar() uint16 {
 }
 
 // IsKeyPressed checks if a key was pressed
-func IsKeyPressed() bool {
+func isKeyPressed() bool {
 	fi, _ := os.Stdin.Stat()
 	return fi.Size() > 0
 }
