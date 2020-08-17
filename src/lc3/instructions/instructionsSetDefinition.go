@@ -11,8 +11,7 @@ import (
 var Lc3instructionSet = Lc3InstructionSet {
   [OP_COUNT]*Lc3Instruction{
     &Lc3Instruction{
-      OP: OP_BR,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -31,8 +30,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_ADD,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -60,8 +58,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_LD,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -80,8 +77,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_ST,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -99,8 +95,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_JSR,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -123,8 +118,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_AND,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -152,8 +146,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_LDR,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -165,8 +158,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_STR,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -178,15 +170,13 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_RTI,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         return false, errors.New("Unknown opcode") /* return an error */
       },
     },
 
     &Lc3Instruction{
-      OP: OP_NOT,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -204,8 +194,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_LDI,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -217,8 +206,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_STI,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -230,8 +218,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_JMP,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -245,15 +232,13 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_RES,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         return false, errors.New("Unknown opcode") /* return an error */
       },
     },
 
     &Lc3Instruction{
-      OP: OP_LEA,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()
@@ -272,8 +257,7 @@ var Lc3instructionSet = Lc3InstructionSet {
     },
 
     &Lc3Instruction{
-      OP: OP_TRAP,
-      Exec: func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
+      func(memory interfaces.Memory, regs interfaces.Registers, param uint16) (next bool, err error) {
         defer func() { /* recover panics */
           err = recover_all()
         }()

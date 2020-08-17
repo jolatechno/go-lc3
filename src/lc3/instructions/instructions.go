@@ -7,7 +7,6 @@ import (
 
 /* defining a basic interface for lc3 instructions */
 type Lc3Instruction struct {
-  OP uint8 /* instruction opcode, uint4 would have been more appropriate but isn't present in standard go */
   Exec func(memory interfaces.Memory, registers interfaces.Registers, param uint16) (next bool, err error) /* function serving intstruction's execution */
 }
 
