@@ -302,11 +302,8 @@ var Lc3instructionSet = Lc3InstructionSet {
 
         case TRAP_PUTS:
           r := readReg(regs, registers.R_R0) /* read r0 register */
-          for {
-            mem := readMem(memory, r) /* read value off of memory */
-            if mem == 0 { /* if 0 exit */
-              return true, err
-            }
+          for mem := uint16(1); mem != 0; {
+            mem = readMem(memory, r) /* read value off of memory */
             fmt.Printf("%c", rune(mem))
             r++ /* increment r */
           }
@@ -333,6 +330,7 @@ var Lc3instructionSet = Lc3InstructionSet {
           }
 
         case TRAP_HALT:
+          fmt.Println("____halting cpu____")
           return false, err
         }
         return true, err
