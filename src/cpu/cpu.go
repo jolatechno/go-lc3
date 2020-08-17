@@ -1,12 +1,18 @@
 package cpu
 
 import (
+  "io/ioutil"
   "github.com/jolatechno/go-lc3/src/interfaces"
 )
 
 /* function to load a program */
-func Load(cpu interfaces.Cpu, offset interface{}, prgm interface{}) (n int, err error) {
-  return cpu.Memory().Writea(offset, prgm) /* write prgm to memory at offset */
+func LoadFile(cpu interfaces.Cpu, filename string) (n int, err error) {
+  prgm, err := ioutil.ReadFile(filename) /* read file */
+  if err != nil { /* throw an error */
+    return 0, err
+  }
+
+  return cpu.Load(prgm) /* write prgm to memory */
 }
 
 /* function to run the vm */
