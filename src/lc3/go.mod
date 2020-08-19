@@ -12,10 +12,10 @@ replace (
 )
 
 require (
-	github.com/jolatechno/go-lc3/src/cpu v0.0.0-20200817162726-ae7719404ec6
-	github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200817162726-ae7719404ec6
-	github.com/jolatechno/go-lc3/src/lc3/instructions v0.0.0-20200817162726-ae7719404ec6
-	github.com/jolatechno/go-lc3/src/lc3/memory v0.0.0-20200817162726-ae7719404ec6
-	github.com/jolatechno/go-lc3/src/lc3/opcode v0.0.0-20200817162726-ae7719404ec6
-	github.com/jolatechno/go-lc3/src/lc3/registers v0.0.0-20200817162726-ae7719404ec6
+	github.com/jolatechno/go-lc3/src/cpu v1.0.0
+	github.com/jolatechno/go-lc3/src/interfaces v1.0.0
+	github.com/jolatechno/go-lc3/src/lc3/instructions v1.0.0
+	github.com/jolatechno/go-lc3/src/lc3/memory v1.0.0
+	github.com/jolatechno/go-lc3/src/lc3/opcode v1.0.0
+	github.com/jolatechno/go-lc3/src/lc3/registers v1.0.0
 )
