@@ -11,9 +11,8 @@ type Lc3Instruction struct {
 }
 
 /* defining the interface */
-func (instru *Lc3Instruction)Run(memory interfaces.Memory, registers interfaces.Registers, op interfaces.Op) (next bool, err error) {
-  params := op.Params() /* redaing parameters */
-  intParam, ok := params.(uint16) /* convert param to int */
+func (instru *Lc3Instruction)Run(memory interfaces.Memory, registers interfaces.Registers, op interface{}) (next bool, err error) {
+  intParam, ok := op.(uint16) /* convert op to int */
   if !ok { /* return an error if not possible */
     return false, errors.New("register not understood")
   }

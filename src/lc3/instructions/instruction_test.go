@@ -3,11 +3,10 @@ package instructions
 import (
   "testing"
   "github.com/jolatechno/go-lc3/src/interfaces"
-  "github.com/jolatechno/go-lc3/src/lc3/opcode"
 )
 
 var (
-  test_opcode = &opcode.Lc3OP{ 0 << 12 }
+  test_opcode uint16 = 0 << 12
 )
 
 func TestLc3InstructionSet(t *testing.T) {

@@ -11,11 +11,13 @@ type Lc3InstructionSet struct {
 }
 
 /* defining the interface */
-func (set *Lc3InstructionSet)Get(op interfaces.Op) (instr interfaces.Instruction, err error) {
-  intOp, ok := op.Instruction().(uint16) /* convert instruciton to int */
+func (set *Lc3InstructionSet)Get(op interface{}) (instr interfaces.Instruction, err error) {
+  intOp, ok := op.(uint16) /* convert instruciton to int */
   if !ok { /* return an error if not possible */
     return nil, errors.New("instruction not understood")
   }
+
+  intOp = intOp >> 12 /* read the instruction */
 
   if intOp < 0 || intOp >= OP_COUNT { /* check if instruction is not out of range */
     return nil, errors.New("instruction out of range")
