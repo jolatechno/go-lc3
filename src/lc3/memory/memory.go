@@ -4,7 +4,6 @@ import (
   "math"
   "errors"
   "github.com/jolatechno/go-lc3/src/interfaces"
-  "github.com/jolatechno/go-lc3/src/lc3/opcode"
 )
 
 const (
@@ -16,11 +15,10 @@ type Lc3Mem struct{
   Buff [UINT16_MAX]uint16
 }
 
-/* and creating an array representing this memory */
-var (
-  lc3mem [UINT16_MAX]uint16
-  Lc3mem = Lc3Mem{ lc3mem }
-)
+func New() (mem interfaces.Memory) { /* function to create a new lc3mem interface */
+  var lc3mem [UINT16_MAX]uint16
+  return &Lc3Mem{ lc3mem }
+}
 
 /* defining the interface */
 func (mem *Lc3Mem)Write(address interface{}, value interface{}) (err error) {
@@ -42,37 +40,6 @@ func (mem *Lc3Mem)Write(address interface{}, value interface{}) (err error) {
   return nil
 }
 
-func (mem *Lc3Mem)Writea(address interface{}, values interface{}) (n int, err error) {
-  err = nil
-
-  intAddr, ok := address.(uint16) /* convert adress to int */
-  if !ok { /* return an error if not possible */
-    return 0, errors.New("adress not understood")
-  }
-
-  intValues, ok := values.([]uint16) /* convert values to int */
-  if !ok { /* return an error if not possible */
-    return 0, errors.New("values not understood")
-  }
-
-  n = len(intValues) /* maximum size written */
-
-  if intAddr < 0 || intAddr >= UINT16_MAX { /* check if adress is not out of range */
-    return 0, errors.New("adress is out of range")
-  }
-
-  if int(intAddr) + n > UINT16_MAX { /* check if maximum adress is not out of range */
-    n = int(UINT16_MAX - intAddr)
-    err = errors.New("Write out of range")
-  }
-
-  for i, value := range intValues[0: n] { /* write values to memory */
-    mem.Buff[intAddr + uint16(i)] = value
-  }
-
-  return n, err
-}
-
 func (mem *Lc3Mem)Read(address interface{}) (value interface{}, err error) {
   intAddr, ok := address.(uint16) /* convert adress to int */
   if !ok { /* return an error if not possible */
@@ -87,47 +54,6 @@ func (mem *Lc3Mem)Read(address interface{}) (value interface{}, err error) {
   return value, nil
 }
 
-func (mem *Lc3Mem)Reada(address interface{}, values interface{}) (n int, err error) {
-  err = nil
-
-  intAddr, ok := address.(uint16) /* convert adress to int */
-  if !ok { /* return an error if not possible */
-    return 0, errors.New("adress not understood")
-  }
-
-  if intAddr < 0 || intAddr >= UINT16_MAX { /* check if adress is not out of range */
-    return 0, errors.New("adress is out of range")
-  }
-
-  if int(intAddr) + n > UINT16_MAX { /* check if maximum adress is not out of range */
-    n = int(UINT16_MAX - intAddr)
-    err = errors.New("Write out of range")
-  }
-
-  intValues, ok := values.([]uint16) /* convert values to int */
-  if !ok { /* return an error if not possible */
-    return 0, errors.New("values not understood")
-  }
-
-  n = len(intValues) /* maximum size written */
-
-  for i, value := range mem.Buff[intAddr: intAddr + uint16(n)] { /* read values off of memory */
-    intValues[i] = value
-  }
-
-  return n, err
-}
-
-func (mem *Lc3Mem)Fetch(pc interface{}) (op interfaces.Op, err error) {
-  v, err := mem.Read(pc) /* read value of memory */
-  if err != nil { /* throw an error */
-    return nil, err
-  }
-
-  v_int, ok := v.(uint16) /* convert value to int */
-  if !ok { /* return an error if not possible */
-    return nil, errors.New("values not understood")
-  }
-
-  return &opcode.Lc3OP{ v_int }, nil /* return opcode */
+func (mem *Lc3Mem)Reset() {
+  (*mem) = *(New().(*Lc3Mem))
 }
