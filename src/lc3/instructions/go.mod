@@ -6,8 +6,8 @@ replace (
 )
 
 require (
-	github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200820120128-611df7bf9bcb
-	github.com/jolatechno/go-lc3/src/lc3/registers v0.0.0-20200820120128-611df7bf9bcb
+	github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200820123214-15648bf02e06
+	github.com/jolatechno/go-lc3/src/lc3/registers v0.0.0-20200820123214-15648bf02e06
 )
 
 go 1.15
