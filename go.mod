@@ -9,7 +9,7 @@ replace (
 )
 
 require (
-	github.com/jolatechno/go-lc3/src/cpu v0.0.0-20200817210030-60019fa04c0a
-	github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200817210030-60019fa04c0a
-	github.com/jolatechno/go-lc3/src/lc3 v0.0.0-20200817210030-60019fa04c0a
+	github.com/jolatechno/go-lc3/src/cpu v0.0.0-20200820123546-021fa1f13b13
+	github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200820123546-021fa1f13b13
+	github.com/jolatechno/go-lc3/src/lc3 v0.0.0-20200820123546-021fa1f13b13
 )

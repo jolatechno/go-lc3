@@ -42,12 +42,14 @@ import (
 func main() {
   instructions.DebugLc3Instructions = true /* remove if you don't want debuging */
 
-  _, err := cpu.LoadFile(&lc3.Lc3cpu, "your_image_filename") /* test the loadFile function */
+  lc3cpu := New() /* defining a new lc3 cpu */
+
+  _, err := cpu.LoadFile(lc3cpu, "your_image_filename") /* test the loadFile function */
   if err != nil { /* throwing an error */
       panic(err)
   }
 
-  err = cpu.Run(&lc3.Lc3cpu) /* test the run function */
+  err = cpu.Run(lc3cpu) /* test the run function */
   if err != nil { /* throwing an error */
       panic(err)
   }

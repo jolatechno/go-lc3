@@ -17,7 +17,7 @@ func main() {
 
   switch cpu_name := args[0]; cpu_name { /* see the used cpu */
   case "lc3":
-    used_cpu = &lc3.Lc3cpu
+    used_cpu = lc3.New()
 
   default:
     panic("cpu not understood")

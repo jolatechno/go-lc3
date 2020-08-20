@@ -7,5 +7,5 @@ replace (
 )
 
 require (
-  github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200820122136-96df082c05d5
+  github.com/jolatechno/go-lc3/src/interfaces v0.0.0-20200820123546-021fa1f13b13
 )
