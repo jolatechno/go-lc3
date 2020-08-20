@@ -2,6 +2,7 @@ package registers
 
 import (
   "errors"
+  "github.com/jolatechno/go-lc3/src/interfaces"
 )
 
 /* defining the name of all lc3 registers */
@@ -26,11 +27,10 @@ type Lc3Registers struct {
   Registers [R_COUNT]uint16
 }
 
-/* and an array to store them, which will be populated later */
-var (
-  lc3registers = [R_COUNT]uint16{ 0, 0, 0, 0, 0, 0, 0, 0, PC_START, 0 }
-  Lc3registers = Lc3Registers{ lc3registers }
-)
+func New() (regs interfaces.Registers) { /* function to generate a new set of registers */
+  lc3registers := [R_COUNT]uint16{ 0, 0, 0, 0, 0, 0, 0, 0, PC_START, 0 }
+  return &Lc3Registers{ lc3registers }
+}
 
 /* defining the interface */
 func (regs *Lc3Registers)Write(reg interface{}, value interface{}) (err error) {
@@ -70,4 +70,8 @@ func (regs *Lc3Registers)Fetch() (value interface{}, err error) {
   pc := regs.Registers[R_PC] /* read the pc */
   regs.Registers[R_PC] = pc + 1 /* increment it */
   return pc, nil /* return it */
+}
+
+func (regs *Lc3Registers)Reset() {
+  *regs = *New().(*Lc3Registers)
 }

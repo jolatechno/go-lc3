@@ -29,7 +29,7 @@ func TestLc3Memory(t *testing.T) {
 
   lc3mem.Reset() /* reset memory */
 
-  zero_value, err := lc3mem.Read(address) /* checking the Read function */
+  zero_value, err := lc3mem.Read(address) /* reading off of memory  */
   if err != nil { /* throwing an error */
     t.Error(err)
   } else if zero_value != uint16(0) { /* checking if read value has been reset */
