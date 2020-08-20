@@ -55,5 +55,5 @@ func (mem *Lc3Mem)Read(address interface{}) (value interface{}, err error) {
 }
 
 func (mem *Lc3Mem)Reset() {
-  (*mem) = *(New().(*Lc3Mem))
+  *mem = *New().(*Lc3Mem)
 }
