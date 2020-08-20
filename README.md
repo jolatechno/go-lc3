@@ -32,7 +32,7 @@ Images are compiled using [lc3web](https://wchargin.github.io/lc3web/).
 
 #### Usage
 
-To simply run an lc3 vm image, use the following snippet of code :
+To simply run an lc3 vm image, use :
 
 ```go
 package main
@@ -58,25 +58,25 @@ func main() {
 }
 ```
 
-To read a value off of the memory of `cpu` at `address` use
+To read a value off of the memory of `cpu` at `address` use :
 
 ```go
 value, err := cpu.Memory().Read(address) /* read value off of memory */
 ```
 
-To write `value` to it use
+To write `value` to it use :
 
 ```go
 err := cpu.Memory().Write(address, value) /* write value to memory */
 ```
 
-And to reset use
+And to reset it use :
 
 ```go
 cpu.Memory().Reset() /* reset memory */
 ```
 
-The same thing can be applied to registers
+The same thing can be applied to registers :
 
 ```go
 value, err := cpu.Registers().Read(register) /* read value off of registers */
@@ -86,7 +86,7 @@ err := cpu.Registers().Write(register, value) /* write value to registers */
 cpu.Registers().Reset() /* reset registers */
 ```
 
-with the added option of `fetching` the pc register and incrementing it at the same time
+with the added option of `fetching` the pc register and incrementing it at the same time :
 
 ```go
 pc, err := cpu.Registers().Fetch() /* reading the pc register and incrementing it */
