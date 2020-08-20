@@ -23,7 +23,7 @@ func Run(cpu interfaces.Cpu) (err error) {
       return err
     }
 
-    op, err := cpu.Memory().Fetch(pc) /* fetching the next instruction */
+    op, err := cpu.Memory().Read(pc) /* fetching the next instruction */
     if err != nil { /* throw error */
       return err
     }
