@@ -12,4 +12,4 @@ require (
 	github.com/jolatechno/go-lc3/src/lc3/registers v0.0.0-20200817210030-60019fa04c0a
 )
 
-go 1.13
+go 1.15
