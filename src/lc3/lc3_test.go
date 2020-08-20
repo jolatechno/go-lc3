@@ -16,7 +16,7 @@ func TestLc3Cpu(t *testing.T) {
     t.Error("couldn't convert lc3 cpu to interface")
   }
 
-  _, err := cpu.LoadFile(&Lc3cpu, "hello.obj") /* test the loadFile function */
+  _, err := cpu.LoadFile(&Lc3cpu, "../../hello.obj") /* test the loadFile function */
   if err != nil { /* throwing an error */
     t.Error(err)
   } else {

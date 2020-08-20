@@ -375,17 +375,19 @@ var Lc3instructionSet = Lc3InstructionSet {
 
         case TRAP_OUT:
           r := readReg(regs, registers.R_R0) /* read r0 register */
-          fmt.Printf("%c", rune(r))
 
           if DebugLc3Instructions {
             fmt.Printf("OP_TRAP TRAP_OUT r=%c\n", rune(r)) /* debug */
           }
+
+          fmt.Printf("%c", rune(r))
 
         case TRAP_PUTS:
           r := readReg(regs, registers.R_R0) /* read r0 register */
 
           if DebugLc3Instructions {
             fmt.Printf("OP_TRAP TRAP_PUTS r=%X\n", r) /* debug */
+            fmt.Printf("printed : ") /* debug */
           }
 
           for mem := uint16(1); mem != 0; {
@@ -408,6 +410,7 @@ var Lc3instructionSet = Lc3InstructionSet {
 
           if DebugLc3Instructions {
             fmt.Printf("OP_TRAP TRAP_PUTSP r=%X\n", r) /* debug */
+            fmt.Printf("printed : ") /* debug */
           }
 
           for {

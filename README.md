@@ -16,6 +16,12 @@ To run one or more images on one of the `cpus`, simply use
 
 Each image will be loaded in order before before the vm gets initialized.
 
+For example here to run a simple hello world program on an lc3 vm you can use
+
+```
+./main lc3 hello.obj
+```
+
 ## Cpus
 
 ### Lc3
